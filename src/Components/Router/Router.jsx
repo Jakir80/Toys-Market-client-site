@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Main from "../Main/Main";
 import MyToys from "../My Toys/MyToys";
+import UpdateToys from "../My Toys/UpdateToys";
 import ProductForm from "../ProductForm/ProductForm";
 import Registration from "../Registration/Registration";
 import Error from "../Shared/ErrorPage/Error";
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
         {
           path:'/blog',
           element:<Answer></Answer>
+        },
+        {
+          path:'/updateToys/:id',
+          element:<UpdateToys></UpdateToys>,
+          loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/updateToys${params.id}`)
         },
         {
             path:'/registration',

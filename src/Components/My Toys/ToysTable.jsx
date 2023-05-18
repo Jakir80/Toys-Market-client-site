@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 const ToysTable = ({toys,index}) => {
    
-    const {name,email,img,price,description,photo,category,ratings,indx}=toys;
+    const {name,email,img,price,description,photo,category,ratings,_id}=toys;
     return (    
       <tr>
         <th>
@@ -29,7 +30,7 @@ const ToysTable = ({toys,index}) => {
         <td>{description}</td>
      
         <th>
-          <button className="btn btn-md bg-gray-700">update </button>
+          <Link to={`updateToys/${_id}`}><button className="btn btn-md bg-gray-700">update </button></Link>
         </th>
       </tr>
     

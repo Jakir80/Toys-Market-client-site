@@ -6,7 +6,7 @@ const MyToys = () => {
   const {user}=useContext(AUthContext)
   const [allToys,setToys]=useState([])
   useEffect(()=>{
-   fetch(`http://localhost:5000/myToys/${user?.email}`)
+   fetch(`https://toys-market-server-site.vercel.app/myToys/${user?.email}`)
    .then(res=>res.json())
    .then(data=>setToys(data))
   },[user])
