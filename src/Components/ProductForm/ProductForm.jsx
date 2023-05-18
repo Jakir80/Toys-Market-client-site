@@ -28,7 +28,7 @@ const ProductForm = () => {
 
         }
         console.log(productAdded)
-        fetch('http://localhost:5000/toysDetails',{
+        fetch('https://toys-market-server-site.vercel.app/toysDetails',{
             method:"POST",
             headers:{
                 'content-type':'application/json'
@@ -44,7 +44,7 @@ const ProductForm = () => {
             }
             
         })
-        // JSON.stringify(bookings)
+    
     }
 
   return (

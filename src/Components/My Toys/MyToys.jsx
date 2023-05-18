@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
+import ToysTable from './ToysTable';
 
 const MyToys = () => {
+  const {user}=useContext(AUthContext)
+  const [allToys,setToys]=useState([])
+  useEffect(()=>{
+   fetch(`http://localhost:5000/myToys/${user?.email}`)
+   .then(res=>res.json())
+   .then(data=>setToys(data))
+  },[user])
     return (
-        <div>
-          hello from my toys   
-        </div>
+      <div className="overflow-x-auto w-full">
+      <table className="table w-full">     
+        <thead>
+          <tr>
+            <th>
+              <label>
+                #
+              </label>
+            </th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Email</th>
+            <th>Price</th>
+          
+            <th>Ratings</th>
+            <th>Details</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody> 
+          {
+            allToys.map((toys,index)=><ToysTable key={toys._id} toys={toys}index={index}></ToysTable>
+
+              
+            )
+          }  
+         
+       </tbody>
+        
+      </table>
+    </div>
     );
 };
 
