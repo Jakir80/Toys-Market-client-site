@@ -1,7 +1,5 @@
 import 'aos/dist/aos.css';
 import React from 'react';
-
-
 const BlogCard = ({blog}) => {
     // console.log(blog)
     const {date,kidsName,description,productImage}=blog;

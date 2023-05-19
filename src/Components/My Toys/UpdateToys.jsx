@@ -5,8 +5,8 @@ import useTitle from '../JSFUNCTION/useTitle';
 const UpdateToys = () => {
     const updatesToys=useLoaderData();
     useTitle("Update Toys")
-    const {name,email,img,price,description,photo,category,ratings,_id}=updatesToys;
     console.log(updatesToys)
+    const {name,email,img,price,description,photo,category,ratings,_id}=updatesToys;
     return (
         <div className=" bg-gray-200 p-10 rounded-lg shadow-lg">
         <form >

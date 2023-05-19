@@ -8,8 +8,16 @@ const AllToys = () => {
     useTitle('All Toys')   
     return (
         <div>
-      
-
+      <form >
+      <div className='flex text-center mb-4 gap-8'>
+      <div>
+      <input  className='rounded p-2 border-gray-500 border-2' type="search" name="" id="" placeholder='search' />
+      </div>
+      <div>
+         <button className='btn bg-gray-400'> Search</button>
+      </div>
+      </div>
+      </form>
 <div className="overflow-x-auto w-full">
       <table className="table w-full">     
         <thead>

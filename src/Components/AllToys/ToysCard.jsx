@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const ToysCard = ({toys,index}) => {
   const {name,email,img,price,description,category,ratings,_id}=toys;
-  return (    
+  return ( 
+       
     <tr>
+      
       <th>
         <label>
       {index+1}
@@ -31,7 +32,7 @@ const ToysCard = ({toys,index}) => {
       <td>{description }</td>
    
       <th>
-        <Link to={`/updateToys/${_id}`}><button className="btn btn-md bg-gray-700">View Details </button></Link>
+        <Link to={`/details/${_id}`}><button className="btn btn-md bg-gray-700">View Details </button></Link>
       </th>
     </tr>
   
