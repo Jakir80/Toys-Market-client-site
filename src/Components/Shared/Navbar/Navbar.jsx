@@ -11,6 +11,7 @@ const Navbar = () => {
         <>
             <li><Link to="/">Home</Link></li>
             <li><Link to='/blog'>Blog</Link></li>
+            <li><Link to='/alltoys'>All Toys</Link></li>
             {/* <li><Link to='/registration'>Registration</Link></li> */}
             {user ?
                 <><li><Link ><button onClick={handleLogout}>Log out</button></Link></li> <li><Link to='/addproduct'>Add Toys</Link></li> <li><Link to='/mytoys'>My toys</Link></li> </> : <li><Link to='/login'>Login</Link></li>}

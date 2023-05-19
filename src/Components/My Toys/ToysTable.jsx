@@ -30,7 +30,7 @@ const ToysTable = ({toys,index}) => {
         <td>{description}</td>
      
         <th>
-          <Link to={`updateToys/${_id}`}><button className="btn btn-md bg-gray-700">update </button></Link>
+          <Link to={`/updateToys/${_id}`}><button className="btn btn-md bg-gray-700">update </button></Link>
         </th>
       </tr>
     

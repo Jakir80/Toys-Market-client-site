@@ -1,6 +1,9 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
 import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-
+// ..
+AOS.init();
 const Blog = () => {
     const [blogs,setBlogs]=useState([])
     useEffect(()=>{

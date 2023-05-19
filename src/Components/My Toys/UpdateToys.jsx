@@ -3,8 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 
 const UpdateToys = () => {
     const updatesToys=useLoaderData();
-    console.log(updatesToys)
     const {name,email,img,price,description,photo,category,ratings,_id}=updatesToys;
+    console.log(updatesToys)
     return (
         <div className=" bg-gray-200 p-10 rounded-lg shadow-lg">
         <form >
