@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
+import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 
 const ProductForm = () => {
+  useTitle('Add Toys')
     const {user}=useContext(AUthContext)
     const handleaddedProduct=event=>{
         event.preventDefault()

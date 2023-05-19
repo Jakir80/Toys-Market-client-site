@@ -1,8 +1,10 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../JSFUNCTION/useTitle';
 
 const UpdateToys = () => {
     const updatesToys=useLoaderData();
+    useTitle("Update Toys")
     const {name,email,img,price,description,photo,category,ratings,_id}=updatesToys;
     console.log(updatesToys)
     return (

@@ -1,17 +1,14 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../JSFUNCTION/useTitle';
 import ToysCard from './ToysCard';
 
 const AllToys = () => {
-    const alltoys=useLoaderData()   
+    const alltoys=useLoaderData()
+    useTitle('All Toys')   
     return (
         <div>
-         {/* <div className='grid md:grid-cols-3 lg:grid-cols-3'>
-            {
-                alltoys.map(toys=><ToysCard key={toys._id} toys={toys}></ToysCard>)
-            }
-         </div>   */}
-
+      
 
 <div className="overflow-x-auto w-full">
       <table className="table w-full">     

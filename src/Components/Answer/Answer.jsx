@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../JSFUNCTION/useTitle';
 
 const Answer = () => {
+    useTitle("Blog")
     return (
         <div className='bg-gray-200 border-gray-600 rounded-lg border-2 p-6'>
             <h1 className='text-2xl bg-gray-600 text-white p-4 rounded-lg mb-2'>What is an access token and refresh token? How do they work and where should we store them on the client-side?</h1>

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import useTitle from "../../JSFUNCTION/useTitle";
 
 
 const Error = () => {
+    useTitle("Error")
     return (
         <div className='max-w-7xl  mx-auto'>
 

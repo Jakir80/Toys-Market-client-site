@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 const Shops = () => {
+  
   const [activeSubTab, setActiveSubTab] = useState(0);
   const [categorytoys, setCategoryToys] = useState([])
   const handleSubTabSelect = (index) => {

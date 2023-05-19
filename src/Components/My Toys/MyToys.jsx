@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 import ToysTable from './ToysTable';
 
 const MyToys = () => {
   const {user}=useContext(AUthContext)
   const [allToys,setToys]=useState([])
+  useTitle('My Toys')
   useEffect(()=>{
    fetch(`https://toys-market-server-site.vercel.app/myToys/${user?.email}`)
    .then(res=>res.json())

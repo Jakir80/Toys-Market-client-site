@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 
 const Login = () => {
+  useTitle("Login")
     const {user,signin}=useContext(AUthContext)
     const location=useLocation()
     const [error,setError]=useState("")
