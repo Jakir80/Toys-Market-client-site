@@ -1,20 +1,42 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import useTitle from '../JSFUNCTION/useTitle';
+import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 import ToysCard from './ToysCard';
 
 const AllToys = () => {
-    const alltoys=useLoaderData()
+ const [alltoys,SetAallToys]=useState([])
+ const [search,setsearch]=useState("")
+ const {loading}=useContext(AUthContext)
+
+
+ useEffect(()=>{
+fetch('https://toys-market-server-site.vercel.app/toysDetails')
+.then(res=>res.json())
+.then(data=>SetAallToys(data))
+ },[])
+const handlesearch=(event)=>{
+  if(loading){
+    return <p>Loading.....</p>
+  }
+  
+  event.preventDefault()
+    fetch(`https://toys-market-server-site.vercel.app/toysSearch/${search}`)
+    .then(res=>res.json())
+    .then(data=>SetAallToys(data))
+}
+ 
+    // const alltoys=useLoaderData()
     useTitle('All Toys')   
+     
     return (
         <div>
       <form >
-      <div className='flex text-center mb-4 gap-8'>
+      <div className='flex justify-center text-center mb-4 gap-8'>
       <div>
-      <input  className='rounded p-2 border-gray-500 border-2' type="search" name="" id="" placeholder='search' />
+      <input onChange={(event)=>setsearch(event.target.value)} className='rounded p-2 border-gray-500 border-2' type="text" name="search" id="" placeholder='search' />
       </div>
       <div>
-         <button className='btn bg-gray-400'> Search</button>
+         <button onClick={handlesearch} className='btn bg-gray-400'> Search</button>
       </div>
       </div>
       </form>
