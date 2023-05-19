@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 import ToysTable from './ToysTable';
 
 const MyToys = () => {
   const {user}=useContext(AUthContext)
-  const [allToys,setToys]=useState([])
+  const emailbyalltoys=useLoaderData()
+  const [allToys,setToys]=useState(emailbyalltoys)
   useTitle('My Toys')
-  useEffect(()=>{
-   fetch(`https://toys-market-server-site.vercel.app/myToys/${user?.email}`)
-   .then(res=>res.json())
-   .then(data=>setToys(data))
-  },[user])
+
     return (
       <div className="overflow-x-auto w-full">
       <table className="table w-full">     
@@ -35,7 +33,7 @@ const MyToys = () => {
         </thead>
         <tbody> 
           {
-            allToys.map((toys,index)=><ToysTable key={toys._id} toys={toys}index={index}></ToysTable>
+            allToys.map((toys,index)=><ToysTable key={toys._id} toys={toys}index={index} allToys={allToys} setToys={setToys}></ToysTable>
 
               
             )

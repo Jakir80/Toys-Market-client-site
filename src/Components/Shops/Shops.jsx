@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 const Shops = () => {
@@ -9,6 +9,11 @@ const Shops = () => {
   const handleSubTabSelect = (index) => {
     setActiveSubTab(index);
   };
+  useEffect(()=>{
+ fetch("https://toys-market-server-site.vercel.app/toysDetails/Science")
+ .then(res => res.json())
+ .then(data => setCategoryToys(data))
+  },[])
 console.log(categorytoys)
   const HandleSubone = (categoryone) => {  
       fetch(`https://toys-market-server-site.vercel.app/toysDetails/${categoryone}`)
@@ -47,32 +52,30 @@ console.log(categorytoys)
               <TabPanel>
 
 <div>all data{ categorytoys.length}</div>
-
-
-{/* <div>
-  {categorytoys.map(singleCategory=>console.log(singleCategory))}
-</div> */}
                 <div className='grid grid-cols-3'>
                   {
                     categorytoys.map(category => <>
-                      <div key={category._id} className="card w-96 p-4 bg-base-100 shadow-xl mt-6">
-                        <figure><img src={category.img} alt="Shoes" className='border-gray-500 border-2 p-2 mt-4   hover:bg-gray-200 ' /></figure>
-                        <div className="card-body">
-                          <h2 className="card-title">
-                            {category.name}
-                          </h2>
-                          <p>price :${category.price}</p>
-                          <div className='flex justify-between'><p> {category.category}</p>
-                            <p>Ratings :{category.ratings}</p></div>
-                          <p>seller {category.email}</p>
-                          <p>{category.description}</p>
-                        </div>
-                      </div>
-
+                    {
+                       <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
+                       <div className="relative">
+                         <img
+                           className="w-full h-auto"
+                           src={category.img}
+                           alt="Card Image"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400 to-red-500 opacity-0 hover:opacity-75 transition-opacity"></div>
+                       </div>
+                       <div className="p-4">
+                         <h3 className="text-lg font-medium text-gray-800">{category.name}</h3>
+                         <p className="text-gray-600"> price ${category.price}</p>
+                         <p>{category.category}</p>
+                         <p> Ratings :{category.ratings}</p>
+                         <p>{category.description}</p>
+                       </div>
+                     </div>
+                    }
                     </>)
                   }
-
-
 
                 </div>
               </TabPanel>
@@ -82,19 +85,23 @@ console.log(categorytoys)
                <div className='grid grid-cols-3'>
                   {
                     categorytoys.map(category => <>
-                      <div key={category._id} className="card w-96 p-4 bg-base-100 shadow-xl mt-6">
-                        <figure><img src={category.img} alt="Shoes" className='border-gray-500 border-2 p-2 mt-4   hover:bg-gray-200 ' /></figure>
-                        <div className="card-body">
-                          <h2 className="card-title">
-                            {category.name}
-                          </h2>
-                          <p>price :${category.price}</p>
-                          <div className='flex justify-between'><p> {category.category}</p>
-                            <p>Ratings :{category.ratings}</p></div>
-                          <p>seller {category.email}</p>
-                          <p>{category.description}</p>
-                        </div>
-                      </div>
+                        <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
+                       <div className="relative">
+                         <img
+                           className="w-full h-auto"
+                           src={category.img}
+                           alt="Card Image"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400 to-red-500 opacity-0 hover:opacity-75 transition-opacity"></div>
+                       </div>
+                       <div className="p-4">
+                         <h3 className="text-lg font-medium text-gray-800">{category.name}</h3>
+                         <p className="text-gray-600"> price ${category.price}</p>
+                         <p>{category.category}</p>
+                         <p> Ratings :{category.ratings}</p>
+                         <p>{category.description}</p>
+                       </div>
+                     </div>
 
                     </>)
                   }
@@ -103,25 +110,30 @@ console.log(categorytoys)
 
               <TabPanel>
               <div className='grid grid-cols-3'>
-              <h2>all data math{categorytoys.length}</h2>
+           
                   {
                     
                     categorytoys.map(category => <>
-                  
-                      <div key={category._id} className="card w-96 p-4 bg-base-100 shadow-xl mt-6">
-                        <figure><img src={category.img} alt="Shoes" className='border-gray-500 border-2 p-2 mt-4   hover:bg-gray-200 ' /></figure>
-                        <div className="card-body">
-                          <h2 className="card-title">
-                            {category.name}
-                          </h2>
-                          <p>price :${category.price}</p>
-                          <div className='flex justify-between'><p> {category.category}</p>
-                            <p>Ratings :{category.ratings}</p></div>
-                          <p>seller {category.email}</p>
-                          <p>{category.description}</p>
-                        </div>
-                      </div>
-
+                    
+                  <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
+                 
+                       <div className="relative">
+                         <img
+                           className="w-full h-auto"
+                           src={category.img}
+                           alt="Card Image"
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400 to-red-500 opacity-0 hover:opacity-75 transition-opacity"></div>
+                       </div>
+                       <div className="p-4">
+                         <h3 className="text-lg font-medium text-gray-800">{category.name}</h3>
+                         <p className="text-gray-600"> price ${category.price}</p>
+                         <p>{category.category}</p>
+                         <p> Ratings :{category.ratings}</p>
+                         <p>{category.description}</p>
+                       </div>
+                     </div>
+                     {/* <h1> all data{category.length}</h1> */}
                     </>)
                   }
                 </div>

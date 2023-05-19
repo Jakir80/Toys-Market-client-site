@@ -45,17 +45,19 @@ const router = createBrowserRouter([
           element:<PrivateRout><ProductForm></ProductForm></PrivateRout>
         },
         {
-          path:'/mytoys',
-          element:<PrivateRout><MyToys></MyToys></PrivateRout>
+          path:'/mytoys/:email',
+          element:<PrivateRout><MyToys></MyToys></PrivateRout>,
+          loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/myToys/${params.email}`)
+          
         },
         {
           path:'/alltoys',
           element:<AllToys></AllToys>,
-          loader:()=>fetch('https://toys-market-server-site.vercel.app/toysDetails')
+          // loader:()=>fetch('https://toys-market-server-site.vercel.app/toysDetails')
         },
         {
           path:'/details/:id',
-          element:<ViewDetails></ViewDetails>,
+          element:<PrivateRout><ViewDetails></ViewDetails></PrivateRout>,
           loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/viewdetails/${params.id}`)
         }
     
