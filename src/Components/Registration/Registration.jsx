@@ -5,7 +5,7 @@ import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 
 const Registration = () => {
       useTitle("Registration")
-        const {createUser}=useContext(AUthContext)
+        const {createUser,updateUser}=useContext(AUthContext)
         const [error,setError]=useState('')
         const [succeess,setsuccess]=useState('')
         const handleRegistration=event=>{
@@ -18,8 +18,9 @@ const Registration = () => {
             console.log(email,password,name,photo)
             createUser(email,password)
             .then(result=>{
-                const user=result.user;
-                console.log(user)
+                const loggedUser=result.user;
+                console.log(loggedUser)
+                updateUser(loggedUser,name,photo)
                 setsuccess('user created successfully')
                 form.reset()
     
@@ -88,7 +89,7 @@ const Registration = () => {
               >
                 Register
               </button>
-              <h2>Already have an Account Please  <button  >
+              <h2>Already have an Account Please  <button className=' btn btn-link'  >
           <Link to="/login">Login</Link>
           </button></h2>
             </form>

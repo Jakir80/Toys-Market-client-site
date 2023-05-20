@@ -1,13 +1,19 @@
-import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 import ToysTable from './ToysTable';
 
 const MyToys = () => {
   const {user}=useContext(AUthContext)
-  const emailbyalltoys=useLoaderData()
-  const [allToys,setToys]=useState(emailbyalltoys)
+  // const emailbyalltoys=useLoaderData()
+  const [allToys,setToys]=useState([])
+useEffect(()=>{
+  fetch(`https://toys-market-server-site.vercel.app/myToys/${user.email}`)
+  .then(res=>res.json())
+  .then(data=>setToys(data))
+})
+
+
   useTitle('My Toys')
 
     return (
@@ -27,6 +33,7 @@ const MyToys = () => {
             <th>Price</th>
           
             <th>Ratings</th>
+            <th>Quantity</th>
             <th>Details</th>
             <th>Update</th>
           </tr>

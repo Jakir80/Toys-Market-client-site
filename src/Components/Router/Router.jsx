@@ -1,3 +1,4 @@
+// 
 import { createBrowserRouter } from "react-router-dom";
 import AllToys from "../AllToys/AllToys";
 import Answer from "../Answer/Answer";
@@ -45,9 +46,9 @@ const router = createBrowserRouter([
           element:<PrivateRout><ProductForm></ProductForm></PrivateRout>
         },
         {
-          path:'/mytoys/:email',
+          path:'/mytoys',
           element:<PrivateRout><MyToys></MyToys></PrivateRout>,
-          loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/myToys/${params.email}`)
+          // loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/myToys/${params.email}`)
           
         },
         {

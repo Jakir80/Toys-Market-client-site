@@ -16,6 +16,7 @@ const ProductForm = () => {
         const photo=form.img.value;
         const category=form.category.value;
         const description=form.description.value;
+        const quantity=form.quantity.value;
         form.reset()
         console.log(name,email,price,ratings,category)
         const productAdded={ 
@@ -26,7 +27,8 @@ const ProductForm = () => {
             ratings ,
             photo,
             category,
-            description
+            description,
+            quantity
 
         }
         console.log(productAdded)
@@ -94,7 +96,6 @@ const ProductForm = () => {
         </div>
       </div>
     <div className='grid grid-cols-2 gap-4 mb-4'>
-
     <div>
         <label className="text-gray-700 font-medium">Product Name</label>
         <input
@@ -114,6 +115,7 @@ const ProductForm = () => {
         />
       </div>
     </div>
+    <div className='grid grid-cols-2 gap-4 mb-4'>
     <div className="mb-4">
         <label className="text-gray-700 font-medium">Description</label>
         <input
@@ -123,6 +125,16 @@ const ProductForm = () => {
           name='description'
         />
       </div>
+      <div className="mb-4">
+        <label className="text-gray-700 font-medium">Available quantity</label>
+        <input
+          type="text"
+          className="w-full border border-gray-400 rounded px-3 py-2"
+          placeholder="Enter quantity"
+          name='quantity'
+        />
+      </div>
+    </div>
       <button className="bg-gray-600 btn-block btn  text-white px-4 py-2 rounded hover:bg-gray-800">
       Submit
       </button>

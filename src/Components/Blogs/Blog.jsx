@@ -13,7 +13,7 @@ const Blog = () => {
     },[])
     return (
         <div>
-            <h1 className='text-center'> lets Explore our new Blog about kids toys </h1>
+            <h1 className='border-2 p-6 m-6 rounded-lg border-gray-400 bg-gray-200 text-center font-semibold text-3xl'> Lets Explore our new Blog about <br /> kids toys and kids Health </h1>
             <div className='grid md:grid-cols-3 lg:grid-cols-3'>
                 {
                     blogs.map(blog=><BlogCard blog={blog} key={blog._id}></BlogCard>  )

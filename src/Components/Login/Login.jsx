@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
+import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
-
 const Login = () => {
   useTitle("Login")
     const {user,signin}=useContext(AUthContext)
@@ -71,10 +71,13 @@ const Login = () => {
           </button>
          
           <h2>New to this website ? Please <button  >
-          <Link to="/registration">Registration</Link>
+          <button className='btn btn-link'><Link to="/registration">Register</Link></button>
           </button></h2>
         </form>
-        <button onClick={signinbyGoogle}>G</button>
+        
+         sign in with Google
+          <button className='w-full py-2 text-center px-4 bg-gray-500 text-white rounded-md hover:bg-gray-800 transition duration-300 ease-in-out' onClick={signinbyGoogle}> <FaGooglePlusG className='w-8 h-8'  > </FaGooglePlusG></button>
+        
       </div>
     </div>
     );

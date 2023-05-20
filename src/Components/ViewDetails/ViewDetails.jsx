@@ -1,10 +1,11 @@
+import { Rating } from '@smastrom/react-rating';
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const ViewDetails = () => {
     const Details = useLoaderData()
     console.log(Details)
-    const { name, email, img, price, description, category, ratings } = Details;
+    const { name, email, img, price, description, category, ratings,quantity } = Details;
     return (
         <div className='mt-8 '>
             <div className="card  bg-base-100 shadow-xl">
@@ -14,8 +15,13 @@ const ViewDetails = () => {
                     <div>
                     <p> Category :{category}</p></div>
                     <p> price$ {price}</p>
-                    <p>ratings {ratings}</p>
+                    <p> quantity{quantity}</p>
                     <p> Description:{description}</p>
+                    <Rating
+                                style={{ maxWidth: 150 }}
+                                value={ratings}
+                                readOnly
+                            />
                     <div className="card-actions justify-start">
                         <button className="btn bg-gray-600">Buy</button>
                     </div>

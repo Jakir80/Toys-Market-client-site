@@ -5,10 +5,12 @@ const KidsGallery = () => {
     useEffect(() => {
         fetch('https://toys-market-server-site.vercel.app/gallery')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setimages(data))
     }, [])
     return (
-        <div  className='grid grid-cols-2 lg:grid-cols-3'>
+        <div>
+            <h2 className='border-2 p-6 m-6 rounded-lg border-gray-400 bg-gray-200 text-center font-semibold text-3xl'>Our kids gallery . <br /> There is some kids photo look like <br /> when children playing and become happy </h2>
+<div  className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
                 images.map(image => <>
                     <div key={image._id}  className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:shadow-xl transition-shadow">
@@ -21,11 +23,10 @@ const KidsGallery = () => {
                         </div>
 
                     </div>
-
-
-
                 </>)
             }
+        </div>
+
         </div>
     );
 };

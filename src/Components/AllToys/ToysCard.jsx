@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 const ToysCard = ({toys,index}) => {
-  const {name,email,img,price,description,category,ratings,_id}=toys;
+  const {name,email,img,price,description,category,ratings,quantity,_id}=toys;
   return ( 
        
     <tr>
@@ -12,22 +12,15 @@ const ToysCard = ({toys,index}) => {
       {index+1}
         </label>
       </th>
-      <td>
-        <div className="flex items-center space-x-3">
-          <div className="avatar">
-            <div className="  w-20 h-20">
-              <img src={img} />
-            </div>
-          </div>
-         
-        </div>
-      </td>
+     
+    
       <td>
        {name}
       </td>
       <td>{category}</td>
-      <td>{email}</td>
+   
       <td>${price}</td>
+      <td>available quantity: {quantity}</td>
       <td>{ratings}</td>
       <td>{description }</td>
    

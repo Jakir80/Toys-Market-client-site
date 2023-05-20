@@ -13,11 +13,13 @@ const Navbar = () => {
             <li><Link to='/blog'>Blog</Link></li>
             <li><Link to='/alltoys'>All Toys</Link></li>
             {/* <li><Link to='/registration'>Registration</Link></li> */}
-            {user ?
-                <><li><Link ><button onClick={handleLogout}>Log out</button></Link></li> <li><Link to='/addproduct'>Add Toys</Link></li> <li><Link to={`/mytoys/${user.email}`}>My toys</Link></li> </> : <li><Link to='/login'>Login</Link></li>}
+          
+                 <li><Link to='/addproduct'>Add Toys</Link></li> <li><Link to={"/mytoys"}>My toys</Link></li> 
 
         </>
 
+        // : <li><Link to='/login'>Login</Link></li>
+{/* <li><Link ><button onClick={handleLogout}>Log out</button></Link></li> */}
     return (
         <div>
             <div className="navbar bg-gray-500 h-28 mb-10 text-white">
@@ -30,8 +32,8 @@ const Navbar = () => {
                             {navmenu}
                         </ul>
                     </div>
-                    <img className='w-14 h-14
-                rounded-lg' src="https://media.istockphoto.com/id/1395298574/photo/a-surprise-box-surrounded-by-balloons-and-ribbon-on-a-purple-background-3d-rendering.jpg?b=1&s=170667a&w=0&k=20&c=1_6JvJwlbo3x_ATZwMl8-CYutPuZY6oYbvQz5GCXVxo=" alt="" />
+                    <img className='w-20 h-20
+                rounded-lg' src="https://i.ibb.co/qdYFr2f/box.png" alt="" />
                     <h2 className='p-4 font-bold text-2xl'>Toy's World</h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -42,6 +44,14 @@ const Navbar = () => {
                 {/* <div className="navbar-end">
                     <button className='btn btn-outline btn-warning'>Appointment</button>
                 </div> */}
+                <div>
+                 {
+                      
+                        user ? <> <img title= {user?.displayName} className="rounded rounded-circle me-2" style={{width:'40px', height: '40px'}} src= {user?.photoURL} alt="" />: <img src="" alt="" />
+                        <button onClick={handleLogout} className="btn btn-outline-primary fw-semibold">Log Out</button> </> : <Link to = '/login'><button className="btn btn-outline-primary">Login</button></Link>
+                    
+                 }
+                </div>
             </div>
         </div>
     );

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 const ToysTable = ({ toys, index, setToys, allToys }) => {
-  const { name, email, img, price, description, photo, category, ratings, _id } = toys;
+  const { name, email, img, price, description, photo, category,quantity, ratings, _id } = toys;
   const handledelete = (id) => {
     console.log(id)
-    fetch(`https://toys-market-server-site.vercel.app/update/${id}`, {
+    fetch(`https://toys-market-server-site.vercel.app/delete/${id}`, {
       method: "DELETE",
       headers:{
         "content-type":"application/json"
@@ -41,6 +41,7 @@ const ToysTable = ({ toys, index, setToys, allToys }) => {
       <td>{email}</td>
       <td>${price}</td>
       <td>{ratings}</td>
+      <td>{quantity}</td>
       <td>{description}</td>
 
       <th>

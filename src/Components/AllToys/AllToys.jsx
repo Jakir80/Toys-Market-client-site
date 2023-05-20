@@ -4,27 +4,24 @@ import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 import ToysCard from './ToysCard';
 
 const AllToys = () => {
- const [alltoys,SetAallToys]=useState([])
- const [search,setsearch]=useState("")
- const {loading}=useContext(AUthContext)
-
-
- useEffect(()=>{
-fetch('https://toys-market-server-site.vercel.app/toysDetails')
-.then(res=>res.json())
-.then(data=>SetAallToys(data))
- },[])
-const handlesearch=(event)=>{
-  if(loading){
-    return <p>Loading.....</p>
-  }
-  
-  event.preventDefault()
-    fetch(`https://toys-market-server-site.vercel.app/toysSearch/${search}`)
-    .then(res=>res.json())
-    .then(data=>SetAallToys(data))
-}
+  const [alltoys,SetAallToys]=useState([])
+  const [search,setsearch]=useState("")
+  const {loading}=useContext(AUthContext)
  
+  useEffect(()=>{
+ fetch('https://toys-market-server-site.vercel.app/toysDetails')
+ .then(res=>res.json())
+ .then(data=>SetAallToys(data))
+  },[])
+ const handlesearch=(event)=>{
+   if(loading){
+     return <p>Loading.....</p>
+   } 
+   event.preventDefault()
+     fetch(`https://toys-market-server-site.vercel.app/toysSearch/${search}`)
+     .then(res=>res.json())
+     .then(data=>SetAallToys(data))
+ }
     // const alltoys=useLoaderData()
     useTitle('All Toys')   
      
@@ -49,22 +46,20 @@ const handlesearch=(event)=>{
                 #
               </label>
             </th>
-            <th>Image</th>
+          
             <th>Name</th>
             <th>Category</th>
-            <th>Email</th>
-            <th>Price</th>
           
+            {/* <th>Quantity</th> */}
+            <th>Price</th>
+            <th>Available quantity  :</th>
             <th>Ratings</th>
             <th>Details</th>
-            <th>Update</th>
+            <th>View Details</th>
           </tr>
         </thead>
         <tbody> 
-        {/* {
-                alltoys.map(toys,index=><ToysCard key={toys._id} toys={toys} index={index}></ToysCard>
-            }
-          */}
+       
 
           {
             alltoys.map((toys,index)=><ToysCard key={toys._id} toys={toys} index={index}></ToysCard>)
