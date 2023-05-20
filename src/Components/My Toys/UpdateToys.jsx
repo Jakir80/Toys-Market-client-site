@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useTitle from '../JSFUNCTION/useTitle';
 
 const UpdateToys = () => {
@@ -27,7 +28,7 @@ const UpdateToys = () => {
           .then(res => res.json())
           .then(data => {
             if (data.modifiedCount){
-              alert("updated data ")
+              toast("Updated information successfully")
             }
               console.log(data)})
     }

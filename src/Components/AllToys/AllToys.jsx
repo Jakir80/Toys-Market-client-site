@@ -22,7 +22,7 @@ const AllToys = () => {
      .then(res=>res.json())
      .then(data=>SetAallToys(data))
  }
-    // const alltoys=useLoaderData()
+   
     useTitle('All Toys')   
      
     return (
@@ -48,11 +48,11 @@ const AllToys = () => {
             </th>
           
             <th>Name</th>
-            <th>Category</th>
+            <th>Sub Category</th>
           
             {/* <th>Quantity</th> */}
             <th>Price</th>
-            <th>Available quantity  :</th>
+            <th></th>
             <th>Ratings</th>
             <th>Details</th>
             <th>View Details</th>

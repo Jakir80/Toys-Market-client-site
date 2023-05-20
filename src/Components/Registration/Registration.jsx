@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 
 const Registration = () => {
       useTitle("Registration")
-        const {createUser,updateUser}=useContext(AUthContext)
+        const {createUser}=useContext(AUthContext)
         const [error,setError]=useState('')
         const [succeess,setsuccess]=useState('')
         const handleRegistration=event=>{
@@ -20,8 +21,8 @@ const Registration = () => {
             .then(result=>{
                 const loggedUser=result.user;
                 console.log(loggedUser)
-                updateUser(loggedUser,name,photo)
-                setsuccess('user created successfully')
+                // updateUser(loggedUser,name,photo)
+                setsuccess (toast("User created successfully"))
                 form.reset()
     
             })

@@ -5,7 +5,7 @@ import { useLoaderData } from 'react-router-dom';
 const ViewDetails = () => {
     const Details = useLoaderData()
     console.log(Details)
-    const { name, email, img, price, description, category, ratings,quantity } = Details;
+    const { name,img, price, description, category, ratings,quantity } = Details;
     return (
         <div className='mt-8 '>
             <div className="card  bg-base-100 shadow-xl">
@@ -13,9 +13,9 @@ const ViewDetails = () => {
                 <div className="card-body">
                     <h2 className="card-title text-2xl font-bold">{name}</h2>
                     <div>
-                    <p> Category :{category}</p></div>
-                    <p> price$ {price}</p>
-                    <p> quantity{quantity}</p>
+                    <p> Sub Category :{category}</p></div>
+                    <p> price $ {price}</p>
+                    <p> quantity: {quantity}</p>
                     <p> Description:{description}</p>
                     <Rating
                                 style={{ maxWidth: 150 }}

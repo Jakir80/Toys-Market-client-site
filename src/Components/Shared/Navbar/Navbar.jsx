@@ -1,60 +1,154 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { AUthContext } from '../AuthProvider/AuthProvider';
 
+
 const Navbar = () => {
-    const { user, logOut, currentUser } = useContext(AUthContext)
+    const { user, logOut } = useContext(AUthContext)
     const handleLogout = () => {
         logOut()
     }
-    const navmenu =
-        <>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to='/blog'>Blog</Link></li>
-            <li><Link to='/alltoys'>All Toys</Link></li>
-            {/* <li><Link to='/registration'>Registration</Link></li> */}
-          
-                 <li><Link to='/addproduct'>Add Toys</Link></li> <li><Link to={"/mytoys"}>My toys</Link></li> 
+    const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        </>
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-        // : <li><Link to='/login'>Login</Link></li>
-{/* <li><Link ><button onClick={handleLogout}>Log out</button></Link></li> */}
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
+    const isActiveRoute = (route) => {
+        return route === location.pathname;
+    };
+
     return (
-        <div>
-            <div className="navbar bg-gray-500 h-28 mb-10 text-white">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-500 rounded-box w-52">
-                            {navmenu}
-                        </ul>
+        <nav className="bg-gray-600 mb-8">
+            <div className="mx-auto px-4 py-2 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo */}
+                    <div className="flex-shrink-0">
+                        <img src="https://i.ibb.co/qdYFr2f/box.png" alt="Logo" className="h-20 w-auto" />
                     </div>
-                    <img className='w-20 h-20
-                rounded-lg' src="https://i.ibb.co/qdYFr2f/box.png" alt="" />
-                    <h2 className='p-4 font-bold text-2xl'>Toy's World</h2>
+
+                    {/* Component Names */}
+                    <div className="hidden sm:flex sm:items-center sm:justify-center flex-grow">
+                        <Link
+                            to="/"
+                            className={`text-white font-medium text-xl hover:text-gray-300 ${isActiveRoute('/') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/blog"
+                            className={`text-white font-medium text-xl hover:text-gray-300 ml-6 ${isActiveRoute('/blog') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            Blog
+                        </Link>
+                        <Link
+                            to="/alltoys"
+                            className={`text-white font-medium text-xl hover:text-gray-300 ml-6 ${isActiveRoute('/alltoys') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            All Toys
+                        </Link>
+                        <Link
+                            to="/mytoys"
+                            className={`text-white font-medium text-xl hover:text-gray-300 ml-6 ${isActiveRoute('/mytoys') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            My Toys
+                        </Link>
+                    </div>
+
+                    {/* User Login Button */}
+                    <div className='flex gap-3'>
+                        <>{
+                            user ? <> <img title={user?.displayName} className="rounded rounded-circle me-2" style={{ width: '40px', height: '40px' }} src={user?.photoURL} alt="" />
+                                <button onClick={handleLogout} className="btn btn-outline-primary fw-semibold">Log Out</button> </> : <Link to='/login'><button className="btn btn-outline-primary">Login</button></Link>
+
+                        }
+                        </>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    <div className="sm:hidden">
+                        <button
+                            type="button"
+                            className="text-white hover:text-gray-300 focus:outline-none"
+                            onClick={toggleMenu}
+                        >
+                            <svg
+                                className="h-6 w-6 fill-current"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {isMenuOpen ? (
+                                    <path
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                        d="M5 7h14v2H5V7zm0 6h14v-2H5v2zm0 6h14v-2H5v2z"
+                                    />
+                                ) : (
+                                    <path
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                        d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z"
+                                    />
+                                )}
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {navmenu}
-                    </ul>
-                </div>
-                {/* <div className="navbar-end">
-                    <button className='btn btn-outline btn-warning'>Appointment</button>
-                </div> */}
-                <div>
-                 {
-                      
-                        user ? <> <img title= {user?.displayName} className="rounded rounded-circle me-2" style={{width:'40px', height: '40px'}} src= {user?.photoURL} alt="" />: <img src="" alt="" />
-                        <button onClick={handleLogout} className="btn btn-outline-primary fw-semibold">Log Out</button> </> : <Link to = '/login'><button className="btn btn-outline-primary">Login</button></Link>
-                    
-                 }
-                </div>
+
+                {/* Mobile Menu Items */}
+                {isMenuOpen && (
+                    <div className="pt-2 pb-3 space-y-1 sm:hidden">
+                        <Link
+                            to="/"
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/blog"
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/blog') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            Blog
+                        </Link>
+                        <Link
+                            to="/alltoys"
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/component3') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            All Toys
+                        </Link>
+                        <Link
+                            to="/mytoys"
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/component4') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            My Toys
+                        </Link>
+                    </div>
+                )}
             </div>
-        </div>
+        </nav>
     );
 };
 
 export default Navbar;
+

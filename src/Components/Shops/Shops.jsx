@@ -44,20 +44,17 @@ const Shops = () => {
     <div className='text-center'>
       <Tabs className="">
       <TabList className='tex-center'>
-        <Tab>Educational and Learning </Tab>
+        <Tab className="text-white text-3xl bg-gray-600 p-4 mb-2">Educational and Learning </Tab>
       </TabList>
 
       <TabPanel>
         <Tabs selectedIndex={activeSubTab} onSelect={handleSubTabSelect}>
           <TabList>
-            <Tab> <button onClick={() => HandleSubone('Science')}>Science</button> </Tab>
-            <Tab><button onClick={() => HandleSubtwo('Language')}>Language</button></Tab>
-            <Tab><button onClick={() => HandleSubthree('Math')}> </button>Math </Tab>
-          </TabList>
-
-          <TabPanel>
-
-            <div>all data{categorytoys.length}</div>
+            <Tab className="text-white m-3 rounded-lg inline-block bg-gray-400 p-4 mb-2"> <button onClick={() => HandleSubone('Science')}>Science</button> </Tab>
+            <Tab className="text-white m-3 rounded-lg inline-block bg-gray-400 p-4 mb-2"><button onClick={() => HandleSubtwo('Language')}>Language</button></Tab>
+            <Tab className="text-white m-3 rounded-lg inline-block bg-gray-400 p-4 mb-2"><button onClick={() => HandleSubthree('Math')}>Math </button></Tab>       
+         </TabList>
+          <TabPanel>           
             <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
               {
                 categorytoys.map(category => <>
