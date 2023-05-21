@@ -6,6 +6,8 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 import '@smastrom/react-rating/style.css';
+import Aos from 'aos';
+Aos.init();
 const Shops = () => {
 
   const [activeSubTab, setActiveSubTab] = useState(0);
@@ -53,7 +55,7 @@ const Shops = () => {
                 {
                   categorytoys.map(category => <>
                     {
-                      <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
+                      <div  data-aos="zoom-in" className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
                         <div className="relative">
                           <img
                             className="w-full h-auto"
@@ -86,7 +88,7 @@ const Shops = () => {
 
             <TabPanel>
 
-              <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div  data-aos="zoom-in-right" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                   categorytoys.map(category => <>
                     <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
@@ -119,7 +121,7 @@ const Shops = () => {
             </TabPanel>
 
             <TabPanel>
-              <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div  data-aos="fade-up" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
 
                 {
 
