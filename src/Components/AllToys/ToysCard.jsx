@@ -1,27 +1,40 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { Link } from 'react-router-dom';
-const ToysCard = ({toys,index}) => {
-  const {name,price,description,category,ratings,quantity,_id}=toys;
-  return (       
-    <tr>     
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
+const ToysCard = ({ toys, index }) => {
+  const { name, price, description, category, ratings, quantity, _id } = toys;
+  const { user } = useContext(AUthContext)
+  const navigate = useNavigate()
+  const toasts = () => {
+    if (!user) {
+      toast('Please Login first')
+      navigate('/login')
+    }
+  }
+  return (
+    <tr>
       <th>
         <label>
-      {index+1}
+          {index + 1}
         </label>
-      </th>    
+      </th>
       <td>
-       {name}
+        {name}
       </td>
-      <td>{category}</td> 
+      <td>{category}</td>
       <td>${price}</td>
       <td>available quantity: {quantity}</td>
       <td>{ratings}</td>
-      <td>{description }</td> 
-      <th> 
-       <Link to={`/details/${_id}`}><button className="btn btn-md bg-gray-700">View Details </button></Link> 
+      <td>{description}</td>
+      <th>
+        {user ?
+
+          <Link to={`/details/${_id}`}><button className="btn m-4 btn-md bg-gray-600">View Details </button></Link> : <button className="btn m-4 btn-md bg-gray-600" onClick={toasts}>View Details </button>
+        }
       </th>
-    </tr> 
+    </tr>
   );
 };
 

@@ -21,7 +21,7 @@ const Registration = () => {
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser)
-        setsuccess(toast("User created successfully"))
+        setsuccess (toast("User created successfully"))
         form.reset()
       })
       .catch(error => {

@@ -6,6 +6,7 @@ const BlogCard = ({blog}) => {
   Aos.init({
     duration: 1200,
   })
+  
 
     const {date,kidsName,description,productImage}=blog;
     return (

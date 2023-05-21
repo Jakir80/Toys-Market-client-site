@@ -1,20 +1,31 @@
 /* eslint-disable no-undef */
 import { Rating } from '@smastrom/react-rating';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-
 import '@smastrom/react-rating/style.css';
 import Aos from 'aos';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import { toast } from 'react-toastify';
+import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 Aos.init();
-const Shops = () => {
 
+const Shops = () => {
+  const { user } = useContext(AUthContext)
   const [activeSubTab, setActiveSubTab] = useState(0);
   const [categorytoys, setCategoryToys] = useState([])
   const handleSubTabSelect = (index) => {
     setActiveSubTab(index);
   };
+  const navigate=useNavigate()
+
+  const toasts=()=>{
+    if (!user) {
+      toast('Please Login first')
+      navigate('/login')
+    }
+  }
+
 
   useEffect(() => {
     fetch("https://toys-market-server-site.vercel.app/toysDetails/Science")
@@ -51,7 +62,7 @@ const Shops = () => {
               <Tab className="text-white font-semibold m-3 rounded-lg inline-block bg-gray-400 p-4 mb-2"><button onClick={() => HandleSubthree('Math')}>Math </button></Tab>
             </TabList>
             <TabPanel>
-              <div  data-aos="fade-up-right" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div data-aos="fade-up-right" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                   categorytoys.map(category => <>
                     {
@@ -77,7 +88,10 @@ const Shops = () => {
                             readOnly
                           />
                         </div>
-                        <Link to={`/details/${category._id}`}><button className="btn m-4 btn-md bg-gray-600">View Details </button></Link>
+                        {user?
+
+                          <Link to={`/details/${category._id}`}><button className="btn m-4 btn-md bg-gray-600">View Details </button></Link>:<button className="btn m-4 btn-md bg-gray-600" onClick={toasts}>View Details </button>
+                        }
                       </div>
                     }
                   </>)
@@ -88,7 +102,7 @@ const Shops = () => {
 
             <TabPanel>
 
-              <div  data-aos="fade-up-left" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div data-aos="fade-up-left" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                   categorytoys.map(category => <>
                     <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
