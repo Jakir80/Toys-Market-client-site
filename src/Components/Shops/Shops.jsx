@@ -51,11 +51,11 @@ const Shops = () => {
               <Tab className="text-white font-semibold m-3 rounded-lg inline-block bg-gray-400 p-4 mb-2"><button onClick={() => HandleSubthree('Math')}>Math </button></Tab>
             </TabList>
             <TabPanel>
-              <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div  data-aos="fade-up-right" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                   categorytoys.map(category => <>
                     {
-                      <div  data-aos="zoom-in" className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
+                      <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
                         <div className="relative">
                           <img
                             className="w-full h-auto"
@@ -88,7 +88,7 @@ const Shops = () => {
 
             <TabPanel>
 
-              <div  data-aos="zoom-in-right" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div  data-aos="fade-up-left" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 {
                   categorytoys.map(category => <>
                     <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden m-4 hover:scale-105 transition-transform">
@@ -121,7 +121,7 @@ const Shops = () => {
             </TabPanel>
 
             <TabPanel>
-              <div  data-aos="fade-up" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+              <div data-aos="fade-down-right" className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
 
                 {
 

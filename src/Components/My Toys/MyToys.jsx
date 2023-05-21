@@ -11,8 +11,7 @@ const MyToys = () => {
     fetch(`https://toys-market-server-site.vercel.app/myToys/${user.email}`)
       .then(res => res.json())
       .then(data => setToys(data))
-  }
-  )
+  },[user] )
   const handleAssending = () => {
     if (loading) {
       return <p>loading...</p>

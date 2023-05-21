@@ -13,7 +13,9 @@ const AllToys = () => {
       .then(res => res.json())
       .then(data => SetAallToys(data))
   }, [])
+
   const handlesearch = (event) => {
+    
     event.preventDefault()
     if (loading) {
       return <p>Loading.....</p>
@@ -31,7 +33,6 @@ const AllToys = () => {
       })
     }
     else {
-
       event.preventDefault()
       fetch(`https://toys-market-server-site.vercel.app/toysSearch/${search}`)
         .then(res => res.json())
