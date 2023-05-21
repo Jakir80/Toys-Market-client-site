@@ -1,7 +1,12 @@
 /* eslint-disable react/prop-types */
+import Aos from 'aos';
 import 'aos/dist/aos.css';
-import React from 'react';
+
 const BlogCard = ({blog}) => {
+  Aos.init({
+    duration: 1200,
+  })
+
     const {date,kidsName,description,productImage}=blog;
     return (
         <div className="card w-96 p-4 bg-base-100 shadow-xl mt-6 " data-aos="fade-right" >

@@ -13,7 +13,7 @@ const Shops = () => {
   const handleSubTabSelect = (index) => {
     setActiveSubTab(index);
   };
-  const [ratings, setRating] = useState(0)
+
   useEffect(() => {
     fetch("https://toys-market-server-site.vercel.app/toysDetails/Science")
       .then(res => res.json())
