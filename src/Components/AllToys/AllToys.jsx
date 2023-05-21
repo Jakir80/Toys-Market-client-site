@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 import ToysCard from './ToysCard';
@@ -7,27 +8,42 @@ const AllToys = () => {
   const [alltoys,SetAallToys]=useState([])
   const [search,setsearch]=useState("")
   const {loading}=useContext(AUthContext)
- 
   useEffect(()=>{
  fetch('https://toys-market-server-site.vercel.app/toysDetails')
  .then(res=>res.json())
  .then(data=>SetAallToys(data))
   },[])
  const handlesearch=(event)=>{
+  event.preventDefault()
    if(loading){
      return <p>Loading.....</p>
    } 
-   event.preventDefault()
-     fetch(`https://toys-market-server-site.vercel.app/toysSearch/${search}`)
-     .then(res=>res.json())
-     .then(data=>SetAallToys(data))
+
+   if(search.length<1){
+    return Swal.fire({
+      title: 'Please write something on search box',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    })
+   }
+   else{
+
+     event.preventDefault()
+       fetch(`https://toys-market-server-site.vercel.app/toysSearch/${search}`)
+       .then(res=>res.json())
+       .then(data=>SetAallToys(data))
+   }
  }
-   
     useTitle('All Toys')   
      
     return (
         <div>
       <form >
+
       <div className='flex justify-center text-center mb-4 gap-8'>
       <div>
       <input onChange={(event)=>setsearch(event.target.value)} className='rounded p-2 border-gray-500 border-2' type="text" name="search" id="" placeholder='search' />
