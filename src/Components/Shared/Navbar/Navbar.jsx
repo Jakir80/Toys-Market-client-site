@@ -10,19 +10,15 @@ const Navbar = () => {
     }
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
     const closeMenu = () => {
         setIsMenuOpen(false);
     };
-
     const isActiveRoute = (route) => {
         return route === location.pathname;
     };
-
     return (
         <nav className="bg-gray-600 mb-8">
             <div className="mx-auto px-4 py-2 sm:px-6 lg:px-8">
@@ -31,8 +27,6 @@ const Navbar = () => {
                     <div className="flex-shrink-0">
                         <img src="https://i.ibb.co/qdYFr2f/box.png" alt="Logo" className="h-20 w-auto" />
                     </div>
-
-                    {/* Component Names */}
                     <div className="hidden sm:flex sm:items-center sm:justify-center flex-grow">
                         <Link
                             to="/"
@@ -50,6 +44,7 @@ const Navbar = () => {
                         >
                             Blog
                         </Link>
+                        
                         <Link
                             to="/alltoys"
                             className={`text-white font-medium text-xl hover:text-gray-300 ml-6 ${isActiveRoute('/alltoys') ? 'underline text-blue-500' : ''
@@ -66,6 +61,17 @@ const Navbar = () => {
                         >
                             My Toys
                         </Link>
+
+                        <Link
+                            to="/addproduct"
+                            className={`text-white font-medium text-xl hover:text-gray-300 ml-6 ${isActiveRoute('/addproduct') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                            Addtoys
+                        </Link>
+
+
                     </div>
 
                     {/* User Login Button */}
@@ -129,7 +135,7 @@ const Navbar = () => {
                         </Link>
                         <Link
                             to="/alltoys"
-                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/component3') ? 'underline text-blue-500' : ''
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/alltoys') ? 'underline text-blue-500' : ''
                                 }`}
                             onClick={closeMenu}
                         >
@@ -137,11 +143,19 @@ const Navbar = () => {
                         </Link>
                         <Link
                             to="/mytoys"
-                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/component4') ? 'underline text-blue-500' : ''
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/mytoys') ? 'underline text-blue-500' : ''
                                 }`}
                             onClick={closeMenu}
                         >
                             My Toys
+                        </Link>
+                        <Link
+                            to="/addproduct"
+                            className={`text-white block hover:text-gray-300 font-medium ${isActiveRoute('/addproduct') ? 'underline text-blue-500' : ''
+                                }`}
+                            onClick={closeMenu}
+                        >
+                          Add Toys
                         </Link>
                     </div>
                 )}

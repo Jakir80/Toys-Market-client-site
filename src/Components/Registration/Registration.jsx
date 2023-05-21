@@ -21,17 +21,14 @@ const Registration = () => {
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser)
-      
         setsuccess(toast("User created successfully"))
         form.reset()
-
       })
       .catch(error => {
-        console.log(error.message)
+    
         setError(error.message)
       })
   }
-
   return (
     <div className="flex items-center justify-center sm:p-4 p-4 bg-gray-100">
       <div className="bg-white shadow-md rounded-lg sm:p-12">

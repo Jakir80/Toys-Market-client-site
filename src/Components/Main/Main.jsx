@@ -5,10 +5,9 @@ import Navbar from '../Shared/Navbar/Navbar';
 const Main = () => {
     return (
         <>
-         {/* <Navbar></Navbar> */}
-        <Navbar></Navbar>
-         <Outlet></Outlet>
-         <Footer></Footer>  
+            <Navbar></Navbar>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </>
     );
 };

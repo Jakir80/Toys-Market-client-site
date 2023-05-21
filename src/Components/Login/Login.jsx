@@ -5,7 +5,7 @@ import useTitle from '../JSFUNCTION/useTitle';
 import { AUthContext } from '../Shared/AuthProvider/AuthProvider';
 const Login = () => {
   useTitle("Login")
-    const {user,signin}=useContext(AUthContext)
+    const {signin}=useContext(AUthContext)
     const location=useLocation()
     const [error,setError]=useState("")
     const [succeess,setSuccess]=useState("")
@@ -18,17 +18,15 @@ const Login = () => {
         const password=form.password.value;
         signin(email,password)
         .then(result=>{
-            console.log(result)
+           
             const user=result.user
             console.log(user)
             setSuccess("use login successfully")
-            form.reset()
-          // console.log(loggeduser)
-            navigate(from,{replace:true})
-     
+            form.reset()       
+            navigate(from,{replace:true})   
         })
         .catch(error=>{
-            console.log(error.message)
+           
             setError(error.message)
         })
     }
@@ -68,16 +66,13 @@ const Login = () => {
             className="w-full py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-800 transition duration-300 ease-in-out"
           >
             Sign In
-          </button>
-         
+          </button>       
           <h2>New to this website ? Please <button  >
           <button className='btn btn-link'><Link to="/registration">Register</Link></button>
           </button></h2>
-        </form>
-        
+        </form>      
          sign in with Google
-          <button className='w-full py-2 text-center px-4 bg-gray-500 text-white rounded-md hover:bg-gray-800 transition duration-300 ease-in-out' onClick={signinbyGoogle}> <FaGooglePlusG className='w-8 h-8'  > </FaGooglePlusG></button>
-        
+          <button className='w-full py-2 text-center px-4 bg-gray-500 text-white rounded-md hover:bg-gray-800 transition duration-300 ease-in-out' onClick={signinbyGoogle}> <FaGooglePlusG className='w-8 h-8'  > </FaGooglePlusG></button>       
       </div>
     </div>
     );

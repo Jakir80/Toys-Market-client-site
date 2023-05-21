@@ -43,10 +43,10 @@ const Answer = () => {
             <p>Express.js is a popular web application framework for Node.js. It provides a minimalistic and flexible set of features to build web applications and APIs. Express.js simplifies the process of handling HTTP requests, routing, middleware management, and view rendering. It follows the middleware architecture, allowing developers to define custom middleware functions to handle requests and responses. Express.js is widely used in building server-side applications and RESTful APIs due to its simplicity, scalability, and extensive ecosystem of plugins and middleware.
 
                 Next.js, on the other hand, is a framework for building server-rendered React applications. It is built on top of React and Node.js and provides a streamlined and opinionated approach to building full-stack React applications. Next.js offers server-side rendering (SSR) and static site generation (SSG) capabilities, allowing developers to pre-render React components on the server and deliver fully rendered HTML to the client. It also provides features like automatic code splitting, hot module replacement, and serverless deployment. Next.js is often used for building dynamic and SEO-friendly web applications that require server-side rendering or static site generation.</p>
-                <h1  className='text-2xl my-4 bg-gray-600 text-white p-4 rounded-lg mb-2'>
+            <h1 className='text-2xl my-4 bg-gray-600 text-white p-4 rounded-lg mb-2'>
                 What is MongoDB aggregate and how does it work ?
-                </h1>
-                <p>In MongoDB, the aggregate method is used to perform advanced data processing and aggregation operations on collections. It allows you to perform complex computations, transformations, and analysis on your data. The aggregate method takes an array of stages as input, with each stage representing a specific operation to be performed on the data.</p>
+            </h1>
+            <p>In MongoDB, the aggregate method is used to perform advanced data processing and aggregation operations on collections. It allows you to perform complex computations, transformations, and analysis on your data. The aggregate method takes an array of stages as input, with each stage representing a specific operation to be performed on the data.</p>
         </div>
     );
 };

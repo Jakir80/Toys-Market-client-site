@@ -14,57 +14,54 @@ import PrivateRout from "../Shared/PrivateRoute/PrivateRout";
 import ViewDetails from "../ViewDetails/ViewDetails";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element:<Main/>,
-      errorElement:<Error></Error>,
-      children: [
-        {
-            path:'/',
-            element:<Home></Home>
-        },
-        {
-          path: "/login",
-          element:<Login></Login>,
-        },
-        {
-          path:'/blog',
-          element:<Answer></Answer>
-        },
-        {
-          path:'/updateToys/:id',
-          element:<UpdateToys></UpdateToys>,
-          loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/update/${params.id}`)
-        },
-        {
-            path:'/registration',
-            element:<Registration></Registration>
-        },
-     
-        {
-          path:'/addproduct',
-          element:<PrivateRout><ProductForm></ProductForm></PrivateRout>
-        },
-        {
-          path:'/mytoys',
-          element:<PrivateRout><MyToys></MyToys></PrivateRout>,
-          // loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/myToys/${params.email}`)
-          
-        },
-        {
-          path:'/alltoys',
-          element:<AllToys></AllToys>,
-          // loader:()=>fetch('https://toys-market-server-site.vercel.app/toysDetails')
-        },
-        {
-          path:'/details/:id',
-          element:<PrivateRout><ViewDetails></ViewDetails></PrivateRout>,
-          loader:({params})=>fetch(`https://toys-market-server-site.vercel.app/viewdetails/${params.id}`)
-        }
-    
+  {
+    path: "/",
+    element: <Main />,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: '/blog',
+        element: <Answer></Answer>
+      },
+      {
+        path: '/updateToys/:id',
+        element: <UpdateToys></UpdateToys>,
+        loader: ({ params }) => fetch(`https://toys-market-server-site.vercel.app/update/${params.id}`)
+      },
+      {
+        path: '/registration',
+        element: <Registration></Registration>
+      },
 
-      ],
-    },
-  ]);
+      {
+        path: '/addproduct',
+        element: <PrivateRout><ProductForm></ProductForm></PrivateRout>
+      },
+      {
+        path: '/mytoys',
+        element: <PrivateRout><MyToys></MyToys></PrivateRout>,
 
-  export default router;
+
+      },
+      {
+        path: '/alltoys',
+        element: <AllToys></AllToys>,
+      },
+      {
+        path: '/details/:id',
+        element: <PrivateRout><ViewDetails></ViewDetails></PrivateRout>,
+        loader: ({ params }) => fetch(`https://toys-market-server-site.vercel.app/viewdetails/${params.id}`)
+      }
+    ],
+  },
+]);
+
+export default router;

@@ -8,15 +8,15 @@ import Shops from '../Shops/Shops';
 
 const Home = () => {
   useTitle("Home")
-    return (
-        <div>
-          <Banner></Banner>
-          <Gallery></Gallery>
-          <Shops></Shops>
-          <KidsGallery></KidsGallery>
-        <Blog/>
-        </div>
-    );
+  return (
+    <div>
+      <Banner></Banner>
+      <Gallery></Gallery>
+      <Shops></Shops>
+      <KidsGallery></KidsGallery>
+      <Blog />
+    </div>
+  );
 };
 
 export default Home;

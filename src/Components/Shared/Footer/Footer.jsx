@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="mt-8 text-center">
-                    <p className="text-white text-sm">© 2023 Your Kids Toys. All rights reserved.</p>
+                    <p className="text-white text-sm">© 2023 Toy's World . All rights reserved.</p>
                 </div>
             </footer>
 

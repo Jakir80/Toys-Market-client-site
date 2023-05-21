@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useTitle from '../JSFUNCTION/useTitle';
 
 const UpdateToys = () => {
@@ -30,16 +31,13 @@ const UpdateToys = () => {
         if (data.modifiedCount) {
           toast("Updated information successfully")
         }
-        console.log(data)
+      
       })
   }
-  console.log(updatesToys)
-  useTitle("Update Toys")
-
+ useTitle("Update Toys")
   return (
     <div className=" bg-gray-200 p-10 rounded-lg shadow-lg">
       <form onSubmit={handleupdateToys} >
-
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>
             <label className="text-gray-700 font-medium">quantity</label>
@@ -51,10 +49,8 @@ const UpdateToys = () => {
               placeholder="Enter product Product category"
             />
           </div>
-
         </div>
         <div className="grid grid-cols-2 gap-4 mb-4">
-
           <div>
             <label className="text-gray-700 font-medium">Price</label>
             <input
@@ -67,7 +63,6 @@ const UpdateToys = () => {
           </div>
         </div>
         <div className='grid grid-cols-2 gap-4 mb-4'>
-
         </div>
         <div className="mb-4">
           <label className="text-gray-700 font-medium">Description</label>
