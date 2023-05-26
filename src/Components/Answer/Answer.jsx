@@ -1,6 +1,6 @@
 import React from 'react';
 import useTitle from '../JSFUNCTION/useTitle';
-
+// nothing to commit
 const Answer = () => {
     useTitle("Blog")
     return (
